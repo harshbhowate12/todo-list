@@ -84,10 +84,17 @@
 
     </div>
     <script>
-        const todolist =[];
+        let todolist =[];
+        const listfromlocalstorage=localStorage.getItem("todolist");
+        if(listfromlocalstorage){
+            todolist=JSON.parse(listfromlocalstorage);
+        }
+
         function getinp(){
             let inputElement=document.getElementById('input-value');
             todolist.push(inputElement.value);
+            
+            localStorage.setItem("todolist", JSON.stringify(todolist));
 
             inputElement.value= "";
             let listContainer=document.getElementById("list-con");
